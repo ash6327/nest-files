@@ -1,0 +1,135 @@
+term=3
+match term:
+    case 0:
+        print("Zero")
+    case 1:
+        print("One")
+    case _:
+        print("Other")
+
+a=10
+b=0
+
+a=open("a.txt","a")
+a.write("Hell001")
+a.close()
+
+with open("a.txt","r") as a:
+    print(a.read())
+
+from a import lib
+print(lib.sum(10,20))
+
+with open("a.txt","r") as a:
+    b=a.read()
+with open("b.txt","w") as c:
+    c.write(b)
+
+a=open("a.txt","r")
+b=a.read()
+a.close()
+
+c=open("b.txt","w")
+c.write(a)
+c.close()
+
+
+a=complex(3,4) #root of -1
+b=complex(5,6)
+print(a*b)
+
+i=0
+if i ==0:
+    raise Exception("Error")
+
+words=[]
+while(word:=input("enter a word:")) != "q":
+    words.append(word) 
+print(words)
+
+lambda a=5,b=9:a+b
+a=[x:=5*i for i in range(10) if i !=0 and i != 5] 
+# print(a)
+eq=lambda a,b:True if a is b else False
+print(eq("ashish","1ashish"))
+
+
+print(a:=len([i for i in range(len(arr)) if arr[i]==max(arr[:i+1])]))
+
+print(sorted([1,0,-1]) == sorted([-1,1,0]))
+
+a={"a":1,"b":2}
+print(**a)
+
+
+final_arr=[]
+def upper(string):
+    x=""
+    for i in string:
+        if(i.isupper()):
+            x+=i.lower()
+        else:
+            x+=i
+    return x
+        
+def find_hex_between(start_hex, end_hex):   
+    hex_values = []
+    for i in range(start_hex, end_hex + 1):
+        hex_values.append(hex(i))
+    return hex_values
+
+with open("D:\py\FontRange_General_Normal_32.txt","r") as a:
+    b=a.read().split(",")
+    arr=[i.strip(" ").strip("\n") for i in b]
+
+for i in arr:
+    if("-" in i):
+        start_hex=i[:i.find("-")]
+        end_hex=i[i.find("-")+1:]
+        for i in find_hex_between(int(start_hex,16),int(end_hex,16)):
+            final_arr.append(i)
+    elif(j for j in i if j.isupper()):
+        k=upper(i)
+        final_arr.append(k)
+    else:
+        final_arr.append(i)
+
+with open("b.txt","w") as a:
+    for i in final_arr:
+        a.write(i+",")
+
+a=[1,2,1,3,2,1,2,2,2,1,4,5,67,43,53,7,76,4,8]
+
+class linkedlistnode:
+    def __init__(self,data,nextnode=None):
+        self.data = data
+        self.nextnode = nextnode
+class linked_list:
+    def __init__(self,head=None):
+        self.head = head
+    
+    def insert(self,data):
+        self.data = data
+        node = linkedlistnode(data)
+        if self.head is None:
+            self.head = node
+            return
+        current_node = self.head
+        while True:
+            if current_node.nextnode is None:
+                current_node.nextnode = node
+                break
+            current_node = current_node.nextnode 
+    def printlinkedlist(self):
+        current_node = self.head
+        while current_node is not None:
+            print(current_node.data,end="->")
+            current_node = current_node.nextnode
+        print("None")
+    
+class private:
+    def __init__(self,data):
+        self.__data = data
+
+a= private(5)
+print(a._private__data)
