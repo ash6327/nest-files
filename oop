@@ -1,0 +1,22 @@
+class employee():
+    clsattr=10
+    def __init__(self,name:str,age:int):
+        self.name = name
+        self.age = age
+
+    
+class male(employee):
+    def __init__(self,name:str,age:int,work:str):
+        self.work = work
+        employee.__init__(self,name,age)
+
+    @classmethod
+    def abc(cls):
+        print("class method called")
+    
+    def __repr__(self):
+        return (f"Employee name is {self.name},age is {self.age}")
+
+a1=male("ash",23,"dev")
+print(a1)
+
