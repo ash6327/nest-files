@@ -1,0 +1,41 @@
+from sqlalchemy import create_engine, Column, Integer, String, ForeignKey
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import relationship,sessionmaker
+
+Base = declarative_base()
+
+engine = create_engine("sqlite:///your_database.db")  # Replace with your desired database URL
+
+class User(Base):
+    __tablename__ = "users"
+
+    id = Column(Integer, primary_key=True)
+    name = Column(String)
+    email = Column(String)
+
+class Post(Base):
+    __tablename__ = "posts"
+
+    id = Column(Integer, primary_key=True)
+    title = Column(String)
+    content = Column(String)
+    user_id = Column(Integer, ForeignKey("users.id"))
+
+    user = relationship("User", backref="posts")
+
+session = sessionmaker(engine)
+Base.metadata.create_all(engine)
+
+# Create a new user
+user = User(name="Alice", email="alice@example.com")
+
+# Add a post to the user
+post = Post(title="My First Post", content="This is my first blog post.", user=user)
+
+# Save the changes to the database
+session.add(user)
+session.add(post)
+session.commit()
+
+# Retrieve posts for a specific user
+print(posts := session.query(Post).filter_by(user_id=user.id).all())
