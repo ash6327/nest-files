@@ -1,0 +1,46 @@
+class linkedlistnode:
+    def __init__(self,data,nextnode=None):
+        self.data = data
+        self.nextnode = nextnode
+
+class linked_list:
+
+    def __init__(self,head=None):
+        self.head = head
+
+    def insert(self,data):
+        self.data = data
+        node = linkedlistnode(data)
+        if self.head is None:
+            self.head=node
+            return
+        current_node = self.head
+        while True:
+            if current_node.nextnode is None:
+                current_node.nextnode = node
+                break
+            current_node = current_node.nextnode
+
+    def printlinkedlist(self):
+        current_node = self.head
+        while current_node is not None:
+            print(current_node.data,end="->")
+            current_node = current_node.nextnode
+        print("None")
+
+    def delete(self):
+        if self.head is not None:
+            self.head = self.head.nextnode
+
+
+class private:
+    def __init__(self,data):
+        self.__data = data
+
+a= private(20)
+print(a._private__data)
+
+a=linked_list()
+a.insert(1)
+a.insert(2)
+a.printlinkedlist()
